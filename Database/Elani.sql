@@ -11,13 +11,25 @@ CREATE TABLE `users`(
 `Password` varchar(50) not null,
 `Email` varchar(50) not null,
 `PhoneNumber` int(10) not null,
-`create_user` timestamp not null default CURRENT_TIMESTAMP,
-`role` Tinyint(4) not null default '0',
-`update_user` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+`Timestamp_User` timestamp not null default CURRENT_TIMESTAMP,
+`Role` Tinyint(1) not null default '0',
+`LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(`ID`),
     UNIQUE(`UserName`,`Email`,`PhoneNumber`)
 )
-
+-------------------------------------------------------------------------
+--3
+CREATE TABLE `posts`(
+`ID` int not null,
+`User_ID` int not null,
+`image` text not null,
+`Timestamp_add` timestamp not null default CURRENT_TIMESTAMP,
+`LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+`text` varchar(200),
+`comment` varchar(200),
+PRIMARY key (`ID`),
+FOREIGN KEY (`User_ID`) REFERENCES `users`(`ID`)
+)
 -------------------------------------------------------------------------
 
 
