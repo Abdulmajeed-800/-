@@ -1,24 +1,42 @@
 
 --1
 CREATE DATABASE elani
-
-
+-------------------------------------------------------------------------
 --2
+
 
 CREATE TABLE `users`(
 `ID` int not null AUTO_INCREMENT,
-`UserName` varchar(50) not null,
-`Password` varchar(50) not null,
-`Email` varchar(50) not null,
-`PhoneNumber` int(10) not null,
+`UserName` varchar(50) not null UNIQUE,
+`Password` varchar(50) not null ,
+`Email` varchar(50) not null UNIQUE,
+`PhoneNumber` int(10) not null UNIQUE,
 `Timestamp_User` timestamp not null default CURRENT_TIMESTAMP,
-`Role` Tinyint(1) not null default '0',
 `LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY(`ID`),
-    UNIQUE(`UserName`,`Email`,`PhoneNumber`)
+    PRIMARY KEY(`ID`)
 )
+
 -------------------------------------------------------------------------
 --3
+
+
+CREATE TABLE accounts (
+`ID` int not null AUTO_INCREMENT,
+`ID_users` int not null,
+`UserName` varchar(50) not null UNIQUE,
+`Password` varchar(50) not null,
+`Email` varchar(50) not null UNIQUE,
+`PhoneNumber` int(10) not null UNIQUE,
+`Timestamp_User` timestamp not null default CURRENT_TIMESTAMP,
+`LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY(`ID`),
+    FOREIGN KEY (`ID_users`) REFERENCES `users`(`ID`)
+)
+
+-------------------------------------------------------------------------
+--4
+
+
 CREATE TABLE `posts`(
 `ID` int not null,
 `User_ID` int not null,
@@ -30,9 +48,8 @@ CREATE TABLE `posts`(
 PRIMARY key (`ID`),
 FOREIGN KEY (`User_ID`) REFERENCES `users`(`ID`)
 )
+
 -------------------------------------------------------------------------
-
-
 
 /*
 INSERT into `users`(`UserName`,`Password`,`Email`,`PhoneNumber`)VALUES
@@ -40,11 +57,6 @@ INSERT into `users`(`UserName`,`Password`,`Email`,`PhoneNumber`)VALUES
 */
 
 
---4
-
-
-
---5
 /*
 update users
 set UserName = 'aaa'
