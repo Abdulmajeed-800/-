@@ -4,6 +4,7 @@ CREATE DATABASE elani
 -------------------------------------------------------------------------
 --2
 
+--copy all
 
 CREATE TABLE `users`(
 `ID` int not null AUTO_INCREMENT,
@@ -14,10 +15,7 @@ CREATE TABLE `users`(
 `Timestamp_User` timestamp not null default CURRENT_TIMESTAMP,
 `LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(`ID`)
-)
-
--------------------------------------------------------------------------
---3
+);
 
 
 CREATE TABLE accounts (
@@ -31,34 +29,42 @@ CREATE TABLE accounts (
 `LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(`ID`),
     FOREIGN KEY (`ID_users`) REFERENCES `users`(`ID`)
-)
-
--------------------------------------------------------------------------
---4
+);
 
 
 CREATE TABLE `posts`(
-`ID` int not null,
+`ID` int not null AUTO_INCREMENT,
 `User_ID` int not null,
-`image` text not null,
+`Account_ID` int not null,
+`Title` varchar(255),
+`Content` varchar(255),
+`Image` text not null,
 `Timestamp_add` timestamp not null default CURRENT_TIMESTAMP,
 `LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
-`text` varchar(200),
-`comment` varchar(200),
 PRIMARY key (`ID`),
 FOREIGN KEY (`User_ID`) REFERENCES `users`(`ID`)
-)
+);
+
+
+CREATE TABLE `comments`(
+`ID` int not null AUTO_INCREMENT PRIMARY key,
+`User_ID` int not null ,
+`Account_ID` int not null, 
+`post_ID` int not null,
+`Content` varchar(255),
+`Timestamp_add` timestamp not null default CURRENT_TIMESTAMP,
+`LastUpdate` timestamp not null default CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP,
+FOREIGN KEY (`User_ID`) REFERENCES `users`(`ID`)   
+);
+
+
+ALTER TABLE posts                                       
+ADD FOREIGN KEY (Account_ID) REFERENCES accounts(ID) ;
+
+ALTER TABLE comments                                       
+ADD FOREIGN KEY (Account_ID) REFERENCES accounts(ID) ;
+
+ALTER TABLE comments                                       
+ADD FOREIGN KEY (post_ID) REFERENCES posts(ID) ;
 
 -------------------------------------------------------------------------
-
-/*
-INSERT into `users`(`UserName`,`Password`,`Email`,`PhoneNumber`)VALUES
-('ali','1234','ali@gmail.com',0536727856);
-*/
-
-
-/*
-update users
-set UserName = 'aaa'
-*/
-
