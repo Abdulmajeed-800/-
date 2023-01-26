@@ -1,41 +1,6 @@
-<<<<<<< HEAD
 
 
 <html lang="ar" dir="rtl">
-=======
-<<<<<<<< HEAD:login1.php
-
-
-<html lang="ar" dir="rtl">
-========
-<?php
-session_start();
-if(isset($_SESSION["user"])) {
-    header("Location: dashboard.php");
-}
-
-if (isset($_POST["submit"])) {
-    $user = $_POST["user"];
-    $email = $_POST["email"];
-    $pass = $_POST["pass"];
-
-    $con = mysqli_connect("localhost", "root", "", "elani");
-    $sql = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
-    $res = mysqli_query($con, $sql);
-    $rows = mysqli_num_rows($res);
-    if ($rows === 1) {
-        $_SESSION["user"] = $user;
-        header("Location: dashboard.php");
-
-    }
-    $error = true;
-    mysqli_close($con);
-}
-?>
-
- <html lang="ar" dir="rtl">
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -123,17 +88,9 @@ if (isset($_POST["submit"])) {
 
         <br>
           <button type="submit" name="submit" class="btn btn-primary">تسجيل الدخول</button>
-<<<<<<< HEAD
           <a href="register.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب مستخدم ) ؟</a>
           <a href="register1.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب مصمم ) ؟</a>
 
-=======
-<<<<<<<< HEAD:login1.php
-          <a href="register1.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب صممم ) ؟</a>
-========
-          <a href="register.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب ) ؟</a>
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 
 
       </form>
@@ -141,23 +98,14 @@ if (isset($_POST["submit"])) {
         </div>
 
 
-<<<<<<< HEAD
         <?php
 session_start();
 if(isset($_SESSION["user"])) {
     header("Location: dashboard.php");
-=======
-<<<<<<<< HEAD:login1.php
-        <?php
-session_start();
-if(isset($_SESSION["user"])) {
-    header("Location: dashboard1.php");
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 }
 
 if (isset($_POST["submit"])) {
     $user = $_POST["user"];
-<<<<<<< HEAD
     //$email = $_POST["email"];
     $pass = $_POST["pass"];
     $con = mysqli_connect("localhost", "root", "", "elani");
@@ -165,41 +113,21 @@ if (isset($_POST["submit"])) {
     if (!empty($user) && (!empty($pass))) {
         
         $sql = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
-=======
-   // $email = $_POST["email"];
-    $pass = $_POST["pass"];
-   $con = mysqli_connect("localhost", "root", "", "elani");
-    if (!empty($user) && (!empty($pass))) {
-        
-        $sql = "SELECT * FROM accounts WHERE username='$user' AND password='$pass'";
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
         $res = mysqli_query($con, $sql);
         $rows = mysqli_num_rows($res);
         if ($rows === 1) {
             $_SESSION["user"] = $user;
-<<<<<<< HEAD
             header("Location: dashboard.php");
         } 
  } else  echo "يجب ادخال اسم المستخدم وكلمة المرور<hr>";
 
         
         $error = true;
-=======
-            header("Location: dashboard1.php");
-        } 
- } else echo "يجب ادخال اسم المستخدم وكلمة المرور<hr>";
-
-        
-        $error = true;
-        
-
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
         mysqli_close($con);
     
 }
 
 if(isset($error)){
-<<<<<<< HEAD
     echo "اسم المستخدم او كلمة المرور غير صحيحة";
 }
 
@@ -209,16 +137,6 @@ if(isset($error)){
 ?>
 
 
-=======
-  echo "اسم المستخدم او كلمة المرور غير صحيحة";
-}
-?>
-========
-
-
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
-
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 </main>
 
 <footer class="text-muted py-3">
@@ -228,25 +146,7 @@ if(isset($error)){
   </div>
 </footer>
 
-<<<<<<< HEAD
 
 
-=======
-<?php
-if(isset($error)){
-    echo "فشل تسجيل الدخول";
-}
-
-
-?>
-
-<<<<<<<< HEAD:login1.php
-
-
-
-
-========
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
   </body>
 </html>

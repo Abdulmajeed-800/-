@@ -1,30 +1,4 @@
-<<<<<<< HEAD
 
-=======
-<<<<<<<< HEAD:register1.php
-
-========
-<?php
-session_start();
-if(isset($_SESSION["user"])) {
-    header("Location: dashboard.php");
-}
-
-if(isset($_POST["register"])){
-    $user = $_POST["user"];
-    $email = $_POST["email"];
-    $pass = $_POST["pass"];
-
-    $con = mysqli_connect("localhost", "root", "", "elani");
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$user', '$email', '$pass')";
-    mysqli_query($con, $sql);
-    mysqli_close($con);
-    header("Location: login.php");}
-
-
-?>
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:register.php
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8">
@@ -125,25 +99,13 @@ if(isset($_POST["register"])){
 
         <br>
           <button type="submit" name="register" class="btn btn-primary">إنشاء</button>
-<<<<<<< HEAD
           <a href="login.php" style="font-size: 12px;">هل لديك حساب ( تسجيل الدخول ) ؟</a>
-=======
-<<<<<<<< HEAD:register1.php
-          <a href="login1.php" style="font-size: 12px;">هل لديك حساب ( تسجيل الدخول ) ؟</a>
-========
-          <a href="login.php" style="font-size: 12px;">هل لديك حساب ( تسجيل الدخول ) ؟</a>
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:register.php
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 
       </form>
           </div>
         </div>
 
-<<<<<<< HEAD
 
-=======
-<<<<<<<< HEAD:register1.php
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
         <?php
 session_start();
 if(isset($_SESSION["user"])) {
@@ -154,7 +116,6 @@ if(isset($_POST["register"])){
     $user = $_POST["user"];
     $email = $_POST["email"];
     $pass = $_POST["pass"];
-<<<<<<< HEAD
     if (!empty($user) && (!empty($email) && (!empty($pass)))) {
         $con = mysqli_connect("localhost", "root", "", "elani");
         $sql = "INSERT INTO users (username, email, password) VALUES ('$user', '$email', '$pass')";
@@ -166,34 +127,10 @@ if(isset($_POST["register"])){
 }
 ?>
 
-=======
-    
-    if (!empty($user) && (!empty($email) && (!empty($pass)))) {
-        $con = mysqli_connect("localhost", "root", "", "elani");
-        $sql = "INSERT INTO accounts (username, email, password) VALUES ('$user', '$email', '$pass')";
-        mysqli_query($con, $sql);
-        mysqli_close($con);
-        header("Location: login1.php");
-    } else{
-      
-        echo  "يجب اكمال البيانات";
-      }
-}
-?>
-
-========
-
-
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:register.php
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 
 
 </main>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 <footer class="text-muted py-3">
 
 

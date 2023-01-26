@@ -1,35 +1,6 @@
-<<<<<<<< HEAD:login1.php
 
 
 <html lang="ar" dir="rtl">
-========
-<?php
-session_start();
-if(isset($_SESSION["user"])) {
-    header("Location: dashboard.php");
-}
-
-if (isset($_POST["submit"])) {
-    $user = $_POST["user"];
-    $email = $_POST["email"];
-    $pass = $_POST["pass"];
-
-    $con = mysqli_connect("localhost", "root", "", "elani");
-    $sql = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
-    $res = mysqli_query($con, $sql);
-    $rows = mysqli_num_rows($res);
-    if ($rows === 1) {
-        $_SESSION["user"] = $user;
-        header("Location: dashboard.php");
-
-    }
-    $error = true;
-    mysqli_close($con);
-}
-?>
-
- <html lang="ar" dir="rtl">
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -117,11 +88,7 @@ if (isset($_POST["submit"])) {
 
         <br>
           <button type="submit" name="submit" class="btn btn-primary">تسجيل الدخول</button>
-<<<<<<<< HEAD:login1.php
           <a href="register1.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب صممم ) ؟</a>
-========
-          <a href="register.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب ) ؟</a>
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
 
 
       </form>
@@ -129,7 +96,6 @@ if (isset($_POST["submit"])) {
         </div>
 
 
-<<<<<<<< HEAD:login1.php
         <?php
 session_start();
 if(isset($_SESSION["user"])) {
@@ -164,10 +130,6 @@ if(isset($error)){
   echo "اسم المستخدم او كلمة المرور غير صحيحة";
 }
 ?>
-========
-
-
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
 
 </main>
 
@@ -178,20 +140,10 @@ if(isset($error)){
   </div>
 </footer>
 
-<?php
-if(isset($error)){
-    echo "فشل تسجيل الدخول";
-}
-
-
-?>
-
-<<<<<<<< HEAD:login1.php
 
 
 
 
-========
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:login.php
+
   </body>
 </html>

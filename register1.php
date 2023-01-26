@@ -1,26 +1,4 @@
-<<<<<<<< HEAD:register1.php
 
-========
-<?php
-session_start();
-if(isset($_SESSION["user"])) {
-    header("Location: dashboard.php");
-}
-
-if(isset($_POST["register"])){
-    $user = $_POST["user"];
-    $email = $_POST["email"];
-    $pass = $_POST["pass"];
-
-    $con = mysqli_connect("localhost", "root", "", "elani");
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$user', '$email', '$pass')";
-    mysqli_query($con, $sql);
-    mysqli_close($con);
-    header("Location: login.php");}
-
-
-?>
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:register.php
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8">
@@ -121,17 +99,12 @@ if(isset($_POST["register"])){
 
         <br>
           <button type="submit" name="register" class="btn btn-primary">إنشاء</button>
-<<<<<<<< HEAD:register1.php
           <a href="login1.php" style="font-size: 12px;">هل لديك حساب ( تسجيل الدخول ) ؟</a>
-========
-          <a href="login.php" style="font-size: 12px;">هل لديك حساب ( تسجيل الدخول ) ؟</a>
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:register.php
 
       </form>
           </div>
         </div>
 
-<<<<<<<< HEAD:register1.php
         <?php
 session_start();
 if(isset($_SESSION["user"])) {
@@ -156,10 +129,6 @@ if(isset($_POST["register"])){
 }
 ?>
 
-========
-
-
->>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d:register.php
 
 
 </main>
