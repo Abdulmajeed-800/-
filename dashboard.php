@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 <?php require 'conn.php'; ?>
 
+=======
+>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 <?php
 session_start();
 if(!isset($_SESSION["user"])){
@@ -17,6 +20,7 @@ $user = $_SESSION["user"];
 ?>
 
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8">
@@ -175,6 +179,14 @@ if(isset($error)){
       
   </body>
 </html>
+=======
+<html>
+<head>   
+<body>
+
+<h1>welcome to alnatye <?php echo $user; ?></h1>
+<a href="?logout"> تسجيل الخروج </a>
+>>>>>>> cc5e5c6abf09b324680d7a9ac77dca090f22753d
 
 
 
