@@ -1,152 +1,113 @@
-
-
+<!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
     <title>اعلاناتي</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album-rtl/">
 
-
+    
 
     <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.rtl.min.css" rel="stylesheet">
 <link href="css/headers.css" rel="stylesheet">
- <script src="js/bootstrap.bundle.min.js"></script>
-    <style>
-        .bg-color {
-        background-color: #31909C!important;
-        }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+<link href="css/s.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+		<link href="modal/fontawesome/webfonts/fontawesome-all.min.css" rel="stylesheet" media="all">
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+		<!-- Bootstrap Style Sheet 
+		<link href="modal/css/bootstrap.min.css" rel="stylesheet" media="all">-->
 
-
+		<!-- Plugin Style Sheet -->
+		<link href="modal/css/bs4_modal.css" rel="stylesheet" media="all">
+ 
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
 
-<div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-     <h1>  اعلاناتي </h1>
-      </a>
+                <header>
+                      <nav class="navbar">
+                          <div class="container-fluid">
+                              <div>
+                                  
+                                      <img src="img/logo_1.png" style="height: 100px;"> 
+                                  
+                              </div>
+                              <div class="nav navbar-nav1">
+                                <a href="register.php" class="btn btn1" href="sign_up.html">انشاء حساب</a>                     
+                              </div>
+                          </div>
+                      </nav>
+                </header>
 
 
+                <main>
+                    <div class="py-1">
+                        <div class="container">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">تسجيل الدخول</h1>
+                           
+                          </div>
+                          <form action="login_check.php" method="post">
 
-      <div class="col-md-3 text-end">
+                          <?php if (isset($_GET['error'])) {?>
 
-      </div>
-    </header>
-  </div>
+<p class="error"><?php echo $_GET['error'];?></p>
 
-<main>
+<?php } ?>
 
-  <section class="py-2 text-center container">
-    <div class="row py-lg-1">
-      <div class="col-lg-6 col-md-8 mx-auto">
-      <img id="img1" src="logo.png">
-      </div>
-    </div>
-  </section>
-
-  <div class="py-1">
-    <div class="container">
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">تسجيل الدخول</h1>
-
-      </div>
-      <form method="post">
-      <div class="row">
-        <div class="col-5">
-            <label for="username" class="form-label">أسم المستخدم</label>
-            <input type="text" name="user" class="form-control" id="username" >
-
+                         <div class="row my-4">
+                            <div class="col-5">
+                                <label for="username" class="form-label">أسم المستخدم</label>
+                                <input type="text" name="user" class="form-control" id="username" >
+                        
+                            </div>
+                          </div>
+                          <div class="row my-4">
+                            <div class="col-5">
+                           
+                                <label for="password" class="form-label">كلمة المرور</label>
+                                <input type="password" name="pass" class="form-control" id="password" >
+                            </div>
+                          </div>
+                          
+                     
+                          
+                           <div class="row">
+        <div class="col-3">
+            <button type="submit" name="submit" class="w-100 btn btn-primary btn-lg">تسجيل الدخول</button>
         </div>
       </div>
-      <div class="row">
-        <div class="col-5">
-            <label for="password" class="form-label">كلمة المرور</label>
-            <input type="password" name="pass" class="form-control" id="password" >
-        </div>
-      </div>
-
-
-        <br>
-          <button type="submit" name="submit" class="btn btn-primary">تسجيل الدخول</button>
-          <a href="register.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب مستخدم ) ؟</a>
-          <a href="register1.php" style="font-size: 12px;">ليس لديك حساب ( تسجيل حساب مصمم ) ؟</a>
+                      
+                           
+                          </form>
+                              
+                            </div>
+                            </div>
+                            
+                </main>
 
 
 
-      </form>
+<footer class="mt-auto">
+ <nav class="navbar">
+          <div class="container-fluid">
+              <div>
+                 <text x="50%" y="50%" fill="#eceeef" dy=".3em" style="font-size: 18px;font-weight: 600;">  كل الحقوق محفوظة لموقع اعلاناتي  </text>
+              </div>
+              <div class="nav navbar-nav1">
+                    <img src="img/logo_1.png" style="height: 100px;">       
+              </div>
           </div>
-        </div>
-
-
-        <?php
-session_start();
-if(isset($_SESSION["user"])) {
-    header("Location: dashboard.php");
-}
-
-if (isset($_POST["submit"])) {
-    $user = $_POST["user"];
-    //$email = $_POST["email"];
-    $pass = $_POST["pass"];
-    $con = mysqli_connect("localhost", "root", "", "elani");
-
-    if (!empty($user) && (!empty($pass))) {
-        
-        $sql = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
-        $res = mysqli_query($con, $sql);
-        $rows = mysqli_num_rows($res);
-        if ($rows === 1) {
-            $_SESSION["user"] = $user;
-            header("Location: dashboard.php");
-        } 
- } else  echo "يجب ادخال اسم المستخدم وكلمة المرور<hr>";
-
-        
-        $error = true;
-        mysqli_close($con);
-    
-}
-
-if(isset($error)){
-    echo "اسم المستخدم او كلمة المرور غير صحيحة";
-}
-
-
-
-
-?>
-
-
-</main>
-
-<footer class="text-muted py-3">
-
-
-
-  </div>
+      </nav>
 </footer>
 
 
 
+
+
+
+
+      
   </body>
 </html>

@@ -1,25 +1,32 @@
+<?php require 'conn.php'; ?>
+
+
 <?php
 session_start();
-if(!isset($_SESSION["user"])){
-    header("Location: login1.php");
+if(!isset($_SESSION["username"])){
+    header("Location: login.php");
 }
 
 if(isset($_GET["logout"])){
     session_destroy();
-    header("Location: login1.php");
+    header("Location: login.php");
 }
 
-
-$user = $_SESSION["user"];
-
+$user = $_SESSION["username"];
+$idd = $_SESSION["user_id"];
 ?>
 
 <?php
-require 'conn.php';
+
 if(isset($_POST["submit"])){
-    $name = $_POST["text"];
+
+    $title = $_POST["title"];
+    $text = $_POST["text"];
     $date = $_POST["date"];
     $time = $_POST["time"];
+    $comp = $_POST["comp"];
+    
+   
     if($_FILES["formFile"]["error"] === 4){
         echo
         "<script> alert('Image Does Not Exist'); </script>";
@@ -43,14 +50,13 @@ if(isset($_POST["submit"])){
         else{
             $newImageName = uniqid();
             $newImageName .= '.' . $imageExtension;
-
             move_uploaded_file($tmpName, 'images_posts/' .  $newImageName);
-            $query = "INSERT INTO posts (content,image,posting_time,date_publication) VALUES('$name', '$newImageName', '$time', '$date')";
+            $query = ("INSERT INTO posts (designer_id,company_username,title,description,image,publication_date,publication_time) VALUES('$idd', '$comp', '$title', '$text', '$newImageName', '$date', '$time')");
             mysqli_query($conn, $query);
             echo
             "<script> 
             alert('Successfully Added'); 
-            document.location.href = 'dashboard1.php';
+            document.location.href = 'dashboard.php';
             </script>";
             
         }
@@ -63,9 +69,6 @@ if(isset($_POST["submit"])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
     <title>اعلاناتي</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album-rtl/">
@@ -75,77 +78,36 @@ if(isset($_POST["submit"])){
     <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.rtl.min.css" rel="stylesheet">
 <link href="css/headers.css" rel="stylesheet">
- <script src="js/bootstrap.bundle.min.js"></script>
-    <style>
-        ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: blue;
-}
+<link href="css/s.css" rel="stylesheet">
+		<link href="modal/fontawesome/webfonts/fontawesome-all.min.css" rel="stylesheet" media="all">
 
-li {
-  float: right;
-}
+		<!-- Bootstrap Style Sheet 
+		<link href="modal/css/bootstrap.min.css" rel="stylesheet" media="all">-->
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: rgb(124, 75, 124);
-}   
-       .bg-color {
-        background-color: #31909C!important;
-        }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-  
+		<!-- Plugin Style Sheet -->
+		<link href="modal/css/bs4_modal.css" rel="stylesheet" media="all">
+ 
   </head>
-  <body>
-    <ul>
-      <li><a class="active" href="#home">الحساب الشخصي</a></li>
-      <li><a href="?logout">تسجيل الخروج</a></li>
-      
-    </ul>
-    <?php
-if(isset($error)){
-    echo "فشل تسجيل الدخول";
-}
-?>
-    <div class="container">
-      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-          <img id="img1" src="img/logo.png"style="
-          height: 90px;
-      "> 
-      </a>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- test_id-->
 
-      
+   
 
-      <div class="col-md-3 text-end">
-       
-      </div>
-    </header>
-  </div>
+                <header>
+                      <nav class="navbar">
+                          <div class="container-fluid">
+                              <div>
+                                 
+                                      <img src="img/logo_1.png" style="height: 100px;"> 
+                                  
+                              </div>
+                              <div class="nav navbar-nav1">
+                  <a href="dashboard.php" class="btn active">الصفحة الرئيسية</a>
+                  <a href="login.php" class="btn btn1">تسجيل الخروج</a>                 
+              </div>
+                          </div>
+                      </nav>
+                </header>
 
 <main>
 
@@ -158,36 +120,59 @@ if(isset($error)){
        
       </div>
       <form class="" action="" method="post" autocomplete="off" enctype="multipart/form-data">
-      <div class="row">
+      <div class="row my-4">
         <div class="col-5">
             <label for="formFile" class="form-label">أختر صورة</label>
-            <input class="form-control" type="file" name="formFile" id="formFile" accept=".jpg, .jpeg, .png" value="">
+            <input  class="form-control" type="file" id="formFile " name="formFile" accept=".jpg, .jpeg, .png">
+    
+        </div>
+      </div> 
+      <div class="row my-4">
+        <div class="col-5">
+            <label for="text" class="form-label"> عنوان الصورة</label>
+            <input name ="title" type="text" class="form-control" id="title" >
     
         </div>
       </div>
-      <div class="row">
+       <div class="row my-4">
         <div class="col-5">
             <label for="text" class="form-label"> النص</label>
-            <input type="text" class="form-control" name="text" id="text" >
+            <input name ="text" type="text" class="form-control" id="text" >
     
         </div>
       </div>
-      <div class="row">
+       <div class="row my-4">
         <div class="col-5">
             <label for="date" class="form-label">التاريخ</label>
-            <input type="date" class="form-control" name="date" id="date" >
+            <input name ="date" type="date" class="form-control" id="date" >
         </div>
       </div>
-      <div class="row">
+       <div class="row my-4">
         <div class="col-5">
             <label for="time" class="form-label">الوقت</label>
-            <input type="time" class="form-control" name="time" id="time" >
+            <input name ="time" type="time" class="form-control" id="time" >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5">
+            <label for="role" class="form-label">حدد اسم الشركة :</label>
+            <select name="comp" id="comp">
+              <?php
+              $select = $conn -> query("SELECT username FROM users WHERE role = 'company'");
+              while($row = $select -> fetch_assoc()){
+              ?>
+              <option name="comp"><?php echo $row['username']?></option>
+              <?php }?>
+            </select>
         </div>
       </div>
        
-        <br>
-          <button type="submit" name="submit" class="btn btn-primary">إضافة</button>
-       
+                            <div class="row my-4">
+        <div class="col-3">
+            <button type="submit" name="submit" id="submit" class="w-100 btn btn-primary btn-lg"> إضافة</button>
+        </div>
+      </div>
       
        
       </form>
@@ -195,17 +180,28 @@ if(isset($error)){
         </div>
         
       
+        
     
   
 
 </main>
-
-<footer class="text-muted py-3">
-  
-    
-    
-  </div>
+<footer class="mt-auto">
+ <nav class="navbar">
+          <div class="container-fluid">
+              <div>
+                 <text x="50%" y="50%" fill="#eceeef" dy=".3em" style="font-size: 18px;font-weight: 600;">  كل الحقوق محفوظة لموقع اعلاناتي  </text>
+              </div>
+              <div class="nav navbar-nav1">
+                    <img src="img/logo_1.png" style="height: 100px;">       
+              </div>
+          </div>
+      </nav>
 </footer>
+
+
+
+
+
 
 
       

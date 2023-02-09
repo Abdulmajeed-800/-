@@ -1,5 +1,15 @@
 <?php
 
-$conn = mysqli_connect("localhost" , "root", "", "elani");
+$sname= "localhost";
+$unmae= "root";
+$password= "";
+
+$db_name = "elani";
+
+$conn = mysqli_connect($sname , $unmae, $password, $db_name);
+
+if (!$conn){
+    echo "Connection failed!";
+}
 
 ?>
